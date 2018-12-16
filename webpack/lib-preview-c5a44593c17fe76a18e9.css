@@ -1603,6 +1603,7 @@ body.ibot-cant-scroll {
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
   transition: background 0.2s;
+  display: none;
 }
 
 .ModalMask.can-close {
