@@ -9,7 +9,7 @@ const readDir = promisify(fs.readdir);
 const writeFile = promisify(fs.writeFile);
 
 const root = process.cwd();
-const dataSrc = path.resolve(root, 'data');
+const dataSrc = path.resolve(root, 'data/docx');
 const mockSrc = path.resolve(root, 'mock');
 const foodSrc = path.resolve(root, 'images/food');
 
