@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "json": "node ./scripts/getJsonFromDoc.js"
+    "json": "npm run del && node ./scripts/getJsonFromDoc.js",
+    "del": "node ./scripts/del.js"
   },
   "repository": {
     "type": "git",

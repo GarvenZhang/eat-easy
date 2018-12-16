@@ -115,7 +115,7 @@ async function writeData(src, fileName) {
         path: src
     }, options);
 
-    data.desc = result.value;
+    data.desc = result.value.replace(`${fileName}\n\n`, '');
 
     return data;
 }
