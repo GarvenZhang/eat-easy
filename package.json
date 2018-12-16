@@ -1,0 +1,26 @@
+{
+  "name": "eat-easy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "json": "node ./scripts/getJsonFromDoc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GarvenZhang/eat-easy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GarvenZhang/eat-easy/issues"
+  },
+  "homepage": "https://github.com/GarvenZhang/eat-easy#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "mammoth": "^1.4.7",
+    "path": "^0.12.7",
+    "promisfy": "^1.1.4"
+  }
+}
