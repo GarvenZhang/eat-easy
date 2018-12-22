@@ -10,6 +10,7 @@
 
 <script>
 import MessageItem from "../components/messageItem";
+import cookie from '../lib/cookie'
 
 export default {
 	data() {
@@ -32,7 +33,15 @@ export default {
 	},
 	components: {
 		MessageItem
-	},
+  },
+  mounted () {
+
+    // 是否有选择判断
+    if (cookie.get('hasChosenType') !== 1) {
+      this.$router.push('firstChioce')
+    }
+
+  },
 	created() {}
 };
 </script>
