@@ -1,15 +1,17 @@
 <template>
 	<div class="message">
-		<div class="back">返回</div>
+		<router-link to="/">
+			<div class="back">返回</div>
+		</router-link>
 
 		<div class="message-inner">
 			<div class="message-detail">
 				<div class="message-image-wrapper">
-					<img class="message-image" :src="msgData.img_src">
+					<img class="message-image" :src="msgData.goods.goodsImgSrc">
 				</div>
 				<div class="message-content">
-					<h1 class="message-name">{{ msgData.name }}</h1>
-					<p class="message-desc">{{ msgData.desc }}</p>
+					<h1 class="message-name">{{ msgData.goods.goodsName }}</h1>
+					<p class="message-desc">{{ msgData.goods.goodsDesc }}</p>
 				</div>
 			</div>
 
@@ -17,20 +19,20 @@
 				<h2 class="comment-ti">相关评论</h2>
 				<div class="comment-item" v-for="(item, index) in commentData" :key="index">
 					<div class="comment-user-logo-wrapper">
-						<img :src="item.user_logo_src" class="comment-user-logo">
+						<img :src="item.userLogoSrc" class="comment-user-logo">
 					</div>
 					<div class="comment-content-wrapper">
 						<div class="comment-username">{{ item.username }}</div>
-						<div class="comment-content">{{ item.content }}</div>
+						<div class="comment-content">{{ item.commentContent }}</div>
 						<div class="comment-opts">
-							<span class="comment-time">{{ item.time }}</span>
+							<span class="comment-time">{{ dateFormat('yyyy/MM/dd hh:mm', new Date(item.commentTime)) }}</span>
 							<span class="comment-praise"></span>
 						</div>
 
 						<div class="apply">
 							<div class="apply-item" v-for="(r, index) in item.reply" :key="index">
-								<span class="apply-name">{{ r.name }}：</span>
-								<span class="apply-content">{{ r.content }}</span>
+								<span class="apply-name">{{ r.username }}：</span>
+								<span class="apply-content">{{ r.replyContent }}</span>
 							</div>
 						</div>
 					</div>
@@ -41,11 +43,11 @@
 				<h2 class="recommend-ti">推荐商品</h2>
 				<div class="recommend-item" v-for="(item, index) in recommendData" :key="index">
 					<div class="recommend-img-wrapper">
-						<img :src="item.goods_src" class="goods-img">
+						<img :src="item.goodsImgSrc" class="goods-img">
 					</div>
 					<div class="recommend-content">
-						<div class="recommend-name">{{ item.name }}</div>
-						<div class="recommend-price">{{ item.price }}包邮</div>
+						<div class="recommend-name">{{ item.goodsName }}</div>
+						<div class="recommend-price">{{ item.goodsPrice }}包邮</div>
 						<div class="recommend-opts">
 							<button class="btn" type="button">加入清单</button>
 						</div>
@@ -57,71 +59,51 @@
 </template>
 
 <script>
+import dateFormat from "date-format";
+
 export default {
 	data() {
 		return {
 			msgData: {
-				id: 1,
-				name: "Calbee北海道黄油蜂蜜厚切薯片",
-				img_src: "/images/food/1544975407715.jpg",
-				desc:
-					"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n"
+				goods: {
+					goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
+					goodsDesc:
+						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
+					goodsImgSrc: "/images/food/1544975407715.jpg"
+				},
+				user: {
+					username: "小明",
+					userLogoSrc: "/src/assets/imgs/userLogo.jpg"
+				}
 			},
 			commentData: [
 				{
-					id: 1,
+					commentId: 1,
 					username: "小米姑娘",
-					user_logo_src: "",
-					time: "8小时前",
-					content: "哥哥哥哥哥哥",
+					userLogoSrc: "/src/assets/imgs/userLogo.jpg",
+					commentTime: 1545486230449,
+					commentContent: "哥哥哥哥哥哥",
 					reply: [
 						{
-							id: 1,
-							name: "小米姑娘",
-							content: "哥哥哥哥哥哥"
-						},
-						{
-							id: 1,
-							name: "小米姑娘",
-							content: "哥哥哥哥哥哥"
-						}
-					]
-				},
-				{
-					id: 2,
-					username: "小米姑娘",
-					user_logo_src: "",
-					time: "8小时前",
-					content: "哥哥哥哥哥哥",
-					reply: [
-						{
-							id: 1,
-							name: "小米姑娘",
-							content: "哥哥哥哥哥哥"
-						},
-						{
-							id: 1,
-							name: "小米姑娘",
-							content: "哥哥哥哥哥哥"
+							replyId: 1,
+							username: "小米姑娘",
+							replyContent: "哥哥哥哥哥哥"
 						}
 					]
 				}
 			],
 			recommendData: [
 				{
-					id: 1,
-					name: "Calbee北海道黄油蜂蜜厚切薯片",
-					price: 188,
-					goods_src: "/images/food/1544975407715.jpg"
-				},
-				{
-					id: 2,
-					name: "Calbee北海道黄油蜂蜜厚切薯片",
-					price: 188,
-					goods_src: "/images/food/1544975407715.jpg"
+					goodsId: 1,
+					goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
+					goodsPrice: 188,
+					goodsImgSrc: "/images/food/1544975407715.jpg"
 				}
 			]
 		};
+	},
+	methods: {
+		dateFormat
 	}
 };
 </script>
@@ -199,9 +181,11 @@ export default {
 				color: rgba(170, 170, 170, 0.83);
 
 				.comment-praise {
-					display: block;
-					width: 16px;
-					height: 17px;
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					background: url(../assets/imgs/praise_fill.png) no-repeat center;
+					background-size: contain;
 				}
 			}
 		}

@@ -16,20 +16,52 @@
 		<nav class="menu">
 			<ul class="menu-list">
 				<li class="menu-list-item">
-					<span class="icon"></span>
+					<span class="icon icon-recommend"></span>
 					<span class="menu-txt">每周推荐</span>
 				</li>
 				<li class="menu-list-item">
-					<span class="icon"></span>
+					<span class="icon icon-type"></span>
 					<span class="menu-txt">分类</span>
 				</li>
 			</ul>
 		</nav>
 		<div class="message-list">
-			<router-link v-for="(item, index) in messageListData" :key="index" :to="`/message/${item.id}`">
-				<MessageItem :data="item"/>
+			<router-link
+				v-for="(item, index) in messageListData"
+				:key="index"
+				:to="`/message/${item.messageId}`"
+			>
+				<MessageItem
+					:imgSrc="item.goods.goodsImgSrc"
+					:userLogoSrc="item.user.userLogoSrc"
+					:desc="item.goods.goodsDesc"
+					:username="item.user.username"
+					:commentNum="item.commentNum"
+					:praiseNum="item.praiseNum"
+				/>
 			</router-link>
 		</div>
+
+		<nav class="menu main-menu">
+			<ul class="menu-list">
+				<li class="menu-list-item">
+					<span class="icon icon-home"></span>
+					<span class="menu-txt">每周推荐</span>
+				</li>
+				<li class="menu-list-item">
+					<span class="icon icon-find"></span>
+					<span class="menu-txt">发现</span>
+				</li>
+				<li class="menu-list-item">
+					<span class="icon icon-list"></span>
+					<span class="menu-txt">清单</span>
+				</li>
+				<li class="menu-list-item">
+					<span class="icon icon-user"></span>
+					<span class="menu-txt">我的</span>
+				</li>
+			</ul>
+		</nav>
 	</div>
 </template>
 
@@ -46,44 +78,49 @@ export default {
 		return {
 			messageListData: [
 				{
-					id: 1,
-					name: "Calbee北海道黄油蜂蜜厚切薯片",
-					desc:
-						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					img_src: "/images/food/1544975407715.jpg",
-					username: "小明",
+					messageId: 1,
+					goods: {
+						goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
+						goodsDesc:
+							"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
+						goodsImgSrc: "/images/food/1544975407715.jpg"
+					},
+					user: {
+						username: "小明",
+						userLogoSrc: "/src/assets/imgs/userLogo.jpg"
+					},
 					praiseNum: 80,
-					assignmentNum: 50
+					commentNum: 50
 				},
 				{
-					id: 2,
-					name: "Calbee北海道黄油蜂蜜厚切薯片",
-					desc:
-						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					img_src: "/images/food/1544975407715.jpg",
-					username: "小明",
+					messageId: 2,
+					goods: {
+						goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
+						goodsDesc:
+							"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
+						goodsImgSrc: "/images/food/1544975407715.jpg"
+					},
+					user: {
+						username: "小明",
+						userLogoSrc: "/src/assets/imgs/userLogo.jpg"
+					},
 					praiseNum: 80,
-					assignmentNum: 50
+					commentNum: 50
 				},
 				{
-					id: 3,
-					name: "Calbee北海道黄油蜂蜜厚切薯片",
-					desc:
-						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					img_src: "/images/food/1544975407715.jpg",
-					username: "小明",
+					messageId: 3,
+					goods: {
+						goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
+						goodsDesc:
+							"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
+						goodsImgSrc: "/images/food/1544975407715.jpg"
+					},
+					user: {
+						username: "小明",
+						userLogoSrc: "/src/assets/imgs/userLogo.jpg"
+					},
 					praiseNum: 80,
-					assignmentNum: 50
-				},
-				{
-					id: 4,
-					name: "Calbee北海道黄油蜂蜜厚切薯片",
-					desc:
-						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					img_src: "/images/food/1544975407715.jpg",
-					username: "小明",
-					praiseNum: 80,
-					assignmentNum: 50
+					commentNum: 50
 				}
 			]
 		};
@@ -106,21 +143,66 @@ export default {
 		}
 	}
 	.menu {
-		background: #f5f5f5;
 		padding: 3px 0;
 		.menu-list {
 			display: flex;
 			justify-content: center;
+			background: white;
 
 			.menu-list-item {
 				display: flex;
 				flex-direction: column;
-				margin-right: 20px;
+				justify-content: center;
+				align-items: center;
+				margin-right: 40px;
 			}
+			.menu-list-item:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+	.main-menu {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background: white;
+		.menu-list {
+			justify-content: space-around;
 		}
 	}
 	.message-list {
 		padding: 0 10px;
+		max-height: 360px;
+		overflow: scroll;
+		margin: 15px 0;
+	}
+
+	.icon {
+		display: inline-block;
+		width: 32px;
+		height: 32px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.icon-recommend {
+		background-image: url(../assets/imgs/order.png);
+	}
+	.icon-type {
+		background-image: url(../assets/imgs/other.png);
+	}
+	.icon-home {
+		background-image: url(../assets/imgs/homepage_fill.png);
+	}
+	.icon-find {
+		background-image: url(../assets/imgs/browse_fill.png);
+	}
+	.icon-list {
+		background-image: url(../assets/imgs/label_fill.png);
+	}
+	.icon-user {
+		background-image: url(../assets/imgs/group_fill.png);
 	}
 }
 </style>

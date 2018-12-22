@@ -1,21 +1,21 @@
 <template>
 	<div class="message-item">
 		<div class="message-item-inner">
-			<img class="message-img" :src="data.img_src">
-			<p class="message-desc">{{ data.desc }}</p>
+			<img class="message-img" :src="imgSrc">
+			<p class="message-desc">{{ desc }}</p>
 			<div class="message-item-info">
 				<div class="message-user-wrapper">
-					<img class="user-logo">
-					<span class="username">{{ data.username }}</span>
+					<img class="user-logo" :src="userLogoSrc">
+					<span class="username">{{ username }}</span>
 				</div>
 				<div class="message-assignment-wrapper">
 					<div class="assinment">
 						<span class="icon icon-assignment"></span>
-						<div>{{ data.assignmentNum }}</div>
+						<div>{{ commentNum }}</div>
 					</div>
 					<div class="praise">
 						<span class="icon icon-praise"></span>
-						<div>{{ data.praiseNum }}</div>
+						<div>{{ praiseNum }}</div>
 					</div>
 				</div>
 			</div>
@@ -26,16 +26,12 @@
 <script>
 export default {
 	props: {
-		data: {
-			type: Object,
-			default: {
-				img_src: "",
-				desc: "",
-				username: "",
-				assignmentNum: 0,
-				praiseNum: 0
-			}
-		}
+		imgSrc: String,
+		userLogoSrc: String,
+		desc: String,
+		username: String,
+		commentNum: Number,
+		praiseNum: Number
 	},
 	data() {
 		return {};
@@ -98,13 +94,19 @@ export default {
 				margin-right: 20px;
 			}
 
+			.icon {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
 			.icon-assignment {
-				width: 19px;
-				height: 19px;
+				background-image: url(../assets/imgs/message_fill.png);
 			}
 			.icon-praise {
-				width: 16px;
-				height: 19px;
+				background-image: url(../assets/imgs/praise_fill.png);
 			}
 		}
 	}

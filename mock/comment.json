@@ -1,59 +1,15 @@
 {
     "data": [{
-            "id": 1,
+        "commentId": 1,
+        "username": "小米姑娘",
+        "userLogoSrc": "/src/assets/imgs/userLogo.jpg",
+        "commentTime": 1545486230449,
+        "commentContent": "哥哥哥哥哥哥",
+        "reply": [{
+            "replyId": 1,
             "username": "小米姑娘",
-            "user_logo_src": "",
-            "time": "8小时前",
-            "content": "哥哥哥哥哥哥",
-            "reply": [{
-                    "id": 1,
-                    "name": "小米姑娘",
-                    "content": "哥哥哥哥哥哥"
-                },
-                {
-                    "id": 2,
-                    "name": "小米姑娘",
-                    "content": "哥哥哥哥哥哥"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "username": "小米姑娘",
-            "user_logo_src": "",
-            "time": "8小时前",
-            "content": "哥哥哥哥哥哥",
-            "reply": [{
-                    "id": 1,
-                    "name": "小米姑娘",
-                    "content": "哥哥哥哥哥哥"
-                },
-                {
-                    "id": 2,
-                    "name": "小米姑娘",
-                    "content": "哥哥哥哥哥哥"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "username": "小米姑娘",
-            "user_logo_src": "",
-            "time": "8小时前",
-            "content": "哥哥哥哥哥哥",
-            "reply": [{
-                    "id": 1,
-                    "name": "小米姑娘",
-                    "content": "哥哥哥哥哥哥"
-                },
-                {
-                    "id": 2,
-                    "name": "小米姑娘",
-                    "content": "哥哥哥哥哥哥"
-                }
-            ]
-        }
-
-    ]
+            "replyContent": "哥哥哥哥哥哥"
+        }]
+    }]
 
 }
