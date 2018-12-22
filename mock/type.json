@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "name": "biscuits",
+      "isActive": false
+    },
+    {
+      "name": "chips",
+      "isActive": false
+    },
+    {
+      "name": "chocolate",
+      "isActive": false
+    },
+    {
+      "name": "nori",
+      "isActive": false
+    },
+    {
+      "name": "nut",
+      "isActive": false
+    }
+  ]
+}

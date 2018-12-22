@@ -1,7 +1,9 @@
-import Index from '../pages/index';
-import Message from '../pages/message';
-import Discovery from '../pages/discovery';
+import Index from '../pages/index'
+import Message from '../pages/message'
+import FirstChioce from '../pages/firstChoice'
+import Discovery from '../pages/discovery'
 import List from '../pages/list.vue';
+
 
 const routes = [{
     path: '/',
@@ -15,6 +17,11 @@ const routes = [{
     props: true
   },
   {
+    name: 'firstChioce',
+    path: '/firstChioce',
+    component: FirstChioce
+  },
+  {
     name: 'discovery',
     path: '/discovery',
     component: Discovery,
@@ -26,6 +33,6 @@ const routes = [{
     component: List,
     props: true
   }
-];
+]
 
-export default routes;
+export default routes

@@ -49,6 +49,7 @@
 <script>
 import { Swipe, SwipeItem } from "mint-ui";
 import MessageItem from "../components/messageItem";
+import cookie from '../lib/cookie'
 import Menu from "../components/menu";
 
 export default {
@@ -108,7 +109,19 @@ export default {
 				}
 			]
 		};
-	}
+	},
+	components: {
+		MessageItem
+  },
+  mounted () {
+
+    // 是否有选择判断
+    if (!cookie.get('hasChosenType')) {
+      this.$router.push('firstChioce')
+    }
+
+  },
+	created() {}
 };
 </script>
 <style lang="less" scoped>
