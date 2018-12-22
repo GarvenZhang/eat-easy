@@ -1,0 +1,117 @@
+/* css reset */
+
+body {
+    color: #000;
+    background: #f5f5f5;
+    font-size: 12px;
+    line-height: 166.6%;
+    text-align: center;
+}
+
+body,
+input,
+select,
+button {
+    font-family: "PingFangSC-Medium", "Microsoft YaHei", verdana, Simsun, STXihei;
+    zoom: 1;
+}
+
+h1,
+h2,
+h3,
+select,
+input,
+button {
+    font-size: 100%
+}
+
+body,
+h1,
+h2,
+h3,
+ul,
+li,
+form,
+p,
+img {
+    margin: 0;
+    padding: 0;
+    border: 0
+}
+
+input,
+button,
+select,
+img {
+    margin: 0;
+    line-height: normal
+}
+
+select {
+    padding: 1px
+}
+
+ul {
+    list-style: none
+}
+
+select,
+input,
+button,
+button img,
+label {
+    vertical-align: middle
+}
+
+header,
+footer,
+section,
+aside,
+nav,
+hgroup,
+figure,
+figcaption {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none
+}
+
+a {
+    text-decoration: none;
+    color: #848585
+}
+
+a:hover {
+    color: #626262
+}
+
+.fontWeight {
+    font-weight: 700;
+}
+
+#styleConfText,
+#remAutoLoginTxt,
+.domain,
+.nouserselect {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* noscript */
+.noscriptTitle {
+    line-height: 32px;
+    font-size: 24px;
+    color: #d90000;
+    padding: 20px 0;
+    font-weight: 700;
+    background: #fff;
+}
+
+.noscriptLink {
+    text-decoration: underline;
+    color: #005590;
+    font-size: 14px;
+    font-weight: 400
+}
