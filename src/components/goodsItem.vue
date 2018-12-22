@@ -42,7 +42,7 @@ export default {
 	.goods-info-wrapper {
 		flex: 1;
 		text-align: left;
-		font-size: 14px;
+		font-size: 13px;
 		line-height: 2;
 		overflow: hidden;
 

@@ -60,11 +60,12 @@ export default {
 		.message-desc {
 			align-self: flex-start;
 			width: 90%;
-			margin: 5px 0;
+			margin: 10px 0;
 			font-size: 14px;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			white-space: nowrap;
+			color: #333;
 		}
 		.message-item-info {
 			width: 100%;
