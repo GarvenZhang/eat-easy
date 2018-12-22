@@ -1,9 +1,6 @@
 <template>
 	<div class="message">
-		<router-link to="/">
-			<div class="back">返回</div>
-		</router-link>
-
+		<HeaderBar to="/" title="详情"/>
 		<div class="message-inner">
 			<div class="message-detail">
 				<div class="message-image-wrapper">
@@ -60,6 +57,7 @@
 
 <script>
 import dateFormat from "date-format";
+import HeaderBar from "../components/headerBar";
 
 export default {
 	data() {
@@ -102,6 +100,9 @@ export default {
 			]
 		};
 	},
+	components: {
+		HeaderBar
+	},
 	methods: {
 		dateFormat
 	}
@@ -111,6 +112,7 @@ export default {
 .message {
 	background: white;
 	.message-inner {
+		margin-top: 40px;
 		padding: 0 15px;
 	}
 	.message-image-wrapper,

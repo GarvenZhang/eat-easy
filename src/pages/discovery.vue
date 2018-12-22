@@ -1,30 +1,7 @@
 <template>
-	<div class="home">
-		<div class="banner">
-			<mt-swipe :auto="4000">
-				<mt-swipe-item>
-					<img src="../assets/imgs/banner-01.jpg" class="banner-img">
-				</mt-swipe-item>
-				<mt-swipe-item>
-					<img src="../assets/imgs/banner-02.jpg" class="banner-img">
-				</mt-swipe-item>
-				<mt-swipe-item>
-					<img src="../assets/imgs/banner-03.jpg" class="banner-img">
-				</mt-swipe-item>
-			</mt-swipe>
-		</div>
-		<nav class="menu">
-			<ul class="menu-list">
-				<li class="menu-list-item">
-					<span class="icon icon-recommend"></span>
-					<span class="menu-txt">每周推荐</span>
-				</li>
-				<li class="menu-list-item">
-					<span class="icon icon-type"></span>
-					<span class="menu-txt">分类</span>
-				</li>
-			</ul>
-		</nav>
+	<div class="discovery">
+		<HeaderBar to="/" title="发现"/>
+
 		<div class="message-list">
 			<router-link
 				v-for="(item, index) in messageListData"
@@ -41,22 +18,17 @@
 				/>
 			</router-link>
 		</div>
-
-		<Menu/>
 	</div>
 </template>
 
 <script>
-import { Swipe, SwipeItem } from "mint-ui";
 import MessageItem from "../components/messageItem";
-import Menu from "../components/menu";
+import HeaderBar from "../components/headerBar";
 
 export default {
 	components: {
-		Swipe,
-		SwipeItem,
 		MessageItem,
-		Menu
+		HeaderBar
 	},
 	data() {
 		return {
@@ -112,55 +84,9 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.home {
-	.banner {
-		width: 100%;
-		height: 150px;
-		.banner-img {
-			display: block;
-			width: 100%;
-			height: 100%;
-		}
-	}
-	.menu {
-		padding: 3px 0;
-		.menu-list {
-			display: flex;
-			justify-content: center;
-			background: white;
-
-			.menu-list-item {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				margin-right: 40px;
-			}
-			.menu-list-item:last-of-type {
-				margin-right: 0;
-			}
-		}
-	}
+.discovery {
 	.message-list {
-		padding: 0 10px;
-		max-height: 360px;
-		overflow: scroll;
-		margin: 15px 0;
-	}
-
-	.icon {
-		display: inline-block;
-		width: 32px;
-		height: 32px;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.icon-recommend {
-		background-image: url(../assets/imgs/order.png);
-	}
-	.icon-type {
-		background-image: url(../assets/imgs/other.png);
+		margin-top: 40px;
 	}
 }
 </style>
