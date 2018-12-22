@@ -1,32 +1,90 @@
 <template>
 	<div class="home">
-		<div class="banner"></div>
-		<div class="menu"></div>
+		<div class="banner">
+			<mt-swipe :auto="4000">
+				<mt-swipe-item>
+					<img src="../assets/imgs/banner-01.jpg" class="banner-img">
+				</mt-swipe-item>
+				<mt-swipe-item>
+					<img src="../assets/imgs/banner-02.jpg" class="banner-img">
+				</mt-swipe-item>
+				<mt-swipe-item>
+					<img src="../assets/imgs/banner-03.jpg" class="banner-img">
+				</mt-swipe-item>
+			</mt-swipe>
+		</div>
+		<nav class="menu">
+			<ul class="menu-list">
+				<li class="menu-list-item">
+					<span class="icon"></span>
+					<span class="menu-txt">每周推荐</span>
+				</li>
+				<li class="menu-list-item">
+					<span class="icon"></span>
+					<span class="menu-txt">分类</span>
+				</li>
+			</ul>
+		</nav>
 		<div class="message-list">
-			<MessageItem v-for="(item, index) in messageListData" :key="index" :data="item"/>
+			<router-link v-for="(item, index) in messageListData" :key="index" :to="`/message/${item.id}`">
+				<MessageItem :data="item"/>
+			</router-link>
 		</div>
 	</div>
 </template>
 
 <script>
+import { Swipe, SwipeItem } from "mint-ui";
 import MessageItem from "../components/messageItem";
 import cookie from '../lib/cookie'
 
 export default {
+	components: {
+		Swipe,
+		SwipeItem
+	},
 	data() {
 		return {
 			messageListData: [
 				{
+					id: 1,
 					name: "Calbee北海道黄油蜂蜜厚切薯片",
 					desc:
 						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					img_src: ["/images/food/1544975407715.jpg"]
+					img_src: "/images/food/1544975407715.jpg",
+					username: "小明",
+					praiseNum: 80,
+					assignmentNum: 50
 				},
 				{
+					id: 2,
 					name: "Calbee北海道黄油蜂蜜厚切薯片",
 					desc:
 						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					img_src: ["/images/food/1544975407715.jpg"]
+					img_src: "/images/food/1544975407715.jpg",
+					username: "小明",
+					praiseNum: 80,
+					assignmentNum: 50
+				},
+				{
+					id: 3,
+					name: "Calbee北海道黄油蜂蜜厚切薯片",
+					desc:
+						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
+					img_src: "/images/food/1544975407715.jpg",
+					username: "小明",
+					praiseNum: 80,
+					assignmentNum: 50
+				},
+				{
+					id: 4,
+					name: "Calbee北海道黄油蜂蜜厚切薯片",
+					desc:
+						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
+					img_src: "/images/food/1544975407715.jpg",
+					username: "小明",
+					praiseNum: 80,
+					assignmentNum: 50
 				}
 			]
 		};
@@ -37,7 +95,7 @@ export default {
   mounted () {
 
     // 是否有选择判断
-    if (cookie.get('hasChosenType') !== 1) {
+    if (!cookie.get('hasChosenType')) {
       this.$router.push('firstChioce')
     }
 
@@ -45,4 +103,35 @@ export default {
 	created() {}
 };
 </script>
+<style lang="less" scoped>
+.home {
+	.banner {
+		width: 100%;
+		height: 150px;
+		.banner-img {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	.menu {
+		background: #f5f5f5;
+		padding: 3px 0;
+		.menu-list {
+			display: flex;
+			justify-content: center;
+
+			.menu-list-item {
+				display: flex;
+				flex-direction: column;
+				margin-right: 20px;
+			}
+		}
+	}
+	.message-list {
+		padding: 0 10px;
+	}
+}
+</style>
+
 

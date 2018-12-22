@@ -1,5 +1,5 @@
 import Index from '../pages/index'
-import Detail from '../pages/detail'
+import Message from '../pages/message'
 import FirstChioce from '../pages/firstChoice'
 
 const routes = [{
@@ -8,9 +8,9 @@ const routes = [{
   name: 'index'
 },
 {
-  name: 'detail',
-  path: '/detail/:name/:id',
-  component: Detail,
+  name: 'message',
+  path: '/message/:id',
+  component: Message,
   props: true
 },
 {

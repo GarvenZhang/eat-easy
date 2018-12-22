@@ -41,7 +41,8 @@ module.exports = {
       test: /\.less$/,
       use: ['style-loader', 'css-loader', 'less-loader']
     }, {
-      test: /\.(png|jpeg|jpg|svg)$/,
+      test: /\.(jpg|png|gif|jpeg|bmp$)/i,
+      exclude: /node_modules/,
       use: [{
         loader: 'url-loader',
         options: {

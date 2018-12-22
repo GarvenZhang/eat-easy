@@ -12,8 +12,9 @@ export default {
 
 <style scoped>
   .header .title {
+    font: 400 24px/40px 'serif';
     text-align: center;
-    background-color: #ccc;
+    background-color: #f8f8f8;
   }
 </style>
 
