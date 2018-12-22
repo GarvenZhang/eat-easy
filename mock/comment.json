@@ -1,0 +1,15 @@
+{
+    "data": [{
+        "commentId": 1,
+        "username": "小米姑娘",
+        "userLogoSrc": "/src/assets/imgs/userLogo.jpg",
+        "commentTime": 1545486230449,
+        "commentContent": "哥哥哥哥哥哥",
+        "reply": [{
+            "replyId": 1,
+            "username": "小米姑娘",
+            "replyContent": "哥哥哥哥哥哥"
+        }]
+    }]
+
+}

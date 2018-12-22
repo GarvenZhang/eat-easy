@@ -1,6 +1,7 @@
 import Index from '../pages/index'
 import Message from '../pages/message'
 import FirstChioce from '../pages/firstChoice'
+import Discovery from '../pages/discovery'
 
 const routes = [{
   path: '/',
@@ -17,6 +18,12 @@ const routes = [{
   name: 'firstChioce',
   path: '/firstChioce',
   component: FirstChioce
+},
+{
+  name: 'discovery',
+  path: '/discovery',
+  component: Discovery,
+  props: true
 }
 ]
 
