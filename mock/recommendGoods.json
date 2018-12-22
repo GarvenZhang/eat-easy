@@ -1,0 +1,15 @@
+{
+    "data": [{
+            "id": 1,
+            "name": "Calbee北海道黄油蜂蜜厚切薯片",
+            "price": 188,
+            "goods_src": "/images/food/1544975407715.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Calbee北海道黄油蜂蜜厚切薯片",
+            "price": 188,
+            "goods_src": "/images/food/1544975407715.jpg"
+        }
+    ]
+}
