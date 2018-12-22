@@ -3,26 +3,26 @@
 		<ul class="menu-list">
 			<li class="menu-list-item">
 				<router-link to="/" class="menu-list-item-link">
-					<span class="icon icon-home"></span>
-					<span class="menu-txt">首页</span>
+					<span :class="['icon', 'icon-home', path === '/' ? 'active' : '']"></span>
+					<span :class="['menu-txt', path === '/' ? 'active' : '']">首页</span>
 				</router-link>
 			</li>
 			<li class="menu-list-item">
 				<router-link to="/discovery" class="menu-list-item-link">
-					<span class="icon icon-find"></span>
-					<span class="menu-txt">发现</span>
+					<span :class="['icon', 'icon-find', path === '/discovery' ? 'active' : '']"></span>
+					<span :class="['menu-txt', path === '/discovery' ? 'active' : '']">发现</span>
 				</router-link>
 			</li>
 			<li class="menu-list-item">
 				<router-link to="/list" class="menu-list-item-link">
-					<span class="icon icon-list"></span>
-					<span class="menu-txt">清单</span>
+					<span :class="['icon', 'icon-list', path === '/list' ? 'active' : '']"></span>
+					<span :class="['menu-txt', path === '/list' ? 'active' : '']">清单</span>
 				</router-link>
 			</li>
 			<li class="menu-list-item">
 				<router-link to="/me" class="menu-list-item-link">
-					<span class="icon icon-user"></span>
-					<span class="menu-txt">我的</span>
+					<span :class="['icon', 'icon-user', path === '/me' ? 'active' : '']"></span>
+					<span :class="['menu-txt', path === '/me' ? 'active' : '']">我的</span>
 				</router-link>
 			</li>
 		</ul>
@@ -30,7 +30,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+	computed: {
+		path() {
+			return this.$route.path;
+		}
+	}
+};
 </script>
 <style lang="less" scoped>
 .main-menu {
@@ -39,7 +45,8 @@ export default {};
 	left: 0;
 	width: 100%;
 	padding: 3px 0;
-	background: red;
+	background: white;
+	border-top: 1px solid #f5f5f5;
 	.menu-list {
 		display: flex;
 		justify-content: space-around;
@@ -56,7 +63,10 @@ export default {};
 		}
 
 		.menu-txt {
-			color: white;
+			color: #cdcdcd;
+			&.active {
+				color: #d81e06;
+			}
 		}
 	}
 	.icon {
@@ -69,15 +79,27 @@ export default {};
 	}
 	.icon-home {
 		background-image: url(../assets/imgs/homepage_fill.png);
+		&.active {
+			background-image: url(../assets/imgs/homepage_fill_a.png);
+		}
 	}
 	.icon-find {
 		background-image: url(../assets/imgs/browse_fill.png);
+		&.active {
+			background-image: url(../assets/imgs/browse_fill_a.png);
+		}
 	}
 	.icon-list {
 		background-image: url(../assets/imgs/label_fill.png);
+		&.active {
+			background-image: url(../assets/imgs/label_fill_a.png);
+		}
 	}
 	.icon-user {
 		background-image: url(../assets/imgs/group_fill.png);
+		&.active {
+			background-image: url(../assets/imgs/group_fill_a.png);
+		}
 	}
 }
 </style>

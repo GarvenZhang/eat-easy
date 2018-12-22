@@ -139,6 +139,7 @@ export default {
 			text-align: left;
 			line-height: 2;
 			color: #333;
+			padding: 10px 0;
 		}
 	}
 }

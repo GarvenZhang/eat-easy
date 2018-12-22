@@ -18,17 +18,20 @@
 				/>
 			</router-link>
 		</div>
+		<Menu/>
 	</div>
 </template>
 
 <script>
 import MessageItem from "../components/messageItem";
 import HeaderBar from "../components/headerBar";
+import Menu from "../components/menu";
 
 export default {
 	components: {
 		MessageItem,
-		HeaderBar
+		HeaderBar,
+		Menu
 	},
 	data() {
 		return {
