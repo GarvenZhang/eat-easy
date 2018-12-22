@@ -1,4 +1,7 @@
 /* css reset */
+* {
+    box-sizing: border-box;
+}
 
 body {
     color: #000;
