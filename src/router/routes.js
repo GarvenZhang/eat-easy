@@ -2,7 +2,8 @@ import Index from '../pages/index'
 import Message from '../pages/message'
 import FirstChioce from '../pages/firstChoice'
 import Discovery from '../pages/discovery'
-import List from '../pages/list.vue';
+import List from '../pages/list';
+import Category from '../pages/category';
 
 
 const routes = [{
@@ -31,6 +32,12 @@ const routes = [{
     name: 'list',
     path: '/list',
     component: List,
+    props: true
+  },
+  {
+    name: 'category',
+    path: '/category/:id',
+    component: Category,
     props: true
   }
 ]
