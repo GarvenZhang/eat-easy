@@ -41,7 +41,6 @@
 				/>
 			</router-link>
 		</div>
-
 		<Menu/>
 	</div>
 </template>
@@ -110,9 +109,6 @@ export default {
 			]
 		};
 	},
-	components: {
-		MessageItem
-  },
   mounted () {
 
     // 是否有选择判断

@@ -51,6 +51,8 @@
 					</div>
 				</div>
 			</div>
+
+      <GoodsFooter/>
 		</div>
 	</div>
 </template>
@@ -58,6 +60,7 @@
 <script>
 import dateFormat from "date-format";
 import HeaderBar from "../components/headerBar";
+import GoodsFooter from '../components/goodsFooter'
 
 export default {
 	data() {
@@ -101,7 +104,8 @@ export default {
 		};
 	},
 	components: {
-		HeaderBar
+    HeaderBar,
+    GoodsFooter
 	},
 	methods: {
 		dateFormat
