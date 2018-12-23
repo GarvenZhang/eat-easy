@@ -4,6 +4,8 @@ import FirstChioce from '../pages/firstChoice'
 import Discovery from '../pages/discovery'
 import List from '../pages/list';
 import Category from '../pages/category';
+import Me from "../pages/me";
+import Login from "../pages/login"
 
 
 const routes = [{
@@ -38,6 +40,18 @@ const routes = [{
     name: 'category',
     path: '/category/:id',
     component: Category,
+    props: true
+  },
+  {
+    name: 'me',
+    path: '/me',
+    component: Me,
+    props: true
+  },
+  {
+    name: 'login',
+    path: '/login',
+    component: Login,
     props: true
   }
 ]
