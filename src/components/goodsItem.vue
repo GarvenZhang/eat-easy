@@ -24,12 +24,14 @@ export default {
 <style lang="less" scoped>
 .goods-item {
 	display: flex;
-	padding: 20px 15px;
+	padding: 20px 10px;
 	border-bottom: 1px solid #f5f5f5;
 	background: white;
 
 	.goods-img-wrapper {
 		margin-right: 15px;
+		width: 70px;
+		height: 70px;
 		.goods-img {
 			display: block;
 			width: 70px;
@@ -40,15 +42,17 @@ export default {
 	.goods-info-wrapper {
 		flex: 1;
 		text-align: left;
-		font-size: 14px;
+		font-size: 13px;
 		line-height: 2;
+		overflow: hidden;
+
 		.goods-desc {
+			max-width: 158px;
 			font-size: 12px;
-			max-width: 240px;
 			text-overflow: ellipsis;
-			overflow: hidden;
 			white-space: nowrap;
 			color: #333;
+			overflow: hidden;
 		}
 	}
 }

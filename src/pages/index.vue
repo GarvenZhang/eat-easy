@@ -16,12 +16,20 @@
 		<nav class="menu">
 			<ul class="menu-list">
 				<li class="menu-list-item">
-					<span class="icon icon-recommend"></span>
-					<span class="menu-txt">每周推荐</span>
+					<router-link to="/">
+						<div class="menu-list-item-link">
+							<span class="icon icon-recommend"></span>
+							<span class="menu-txt">每周推荐</span>
+						</div>
+					</router-link>
 				</li>
 				<li class="menu-list-item">
-					<span class="icon icon-type"></span>
-					<span class="menu-txt">分类</span>
+					<router-link to="/category/1">
+						<div class="menu-list-item-link">
+							<span class="icon icon-type"></span>
+							<span class="menu-txt">分类</span>
+						</div>
+					</router-link>
 				</li>
 			</ul>
 		</nav>
@@ -48,7 +56,7 @@
 <script>
 import { Swipe, SwipeItem } from "mint-ui";
 import MessageItem from "../components/messageItem";
-import cookie from '../lib/cookie'
+import cookie from "../lib/cookie";
 import Menu from "../components/menu";
 
 export default {
@@ -139,11 +147,13 @@ export default {
 			background: white;
 
 			.menu-list-item {
+				margin-right: 40px;
+			}
+			.menu-list-item-link {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				margin-right: 40px;
 			}
 			.menu-list-item:last-of-type {
 				margin-right: 0;
