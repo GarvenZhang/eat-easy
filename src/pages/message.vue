@@ -14,7 +14,7 @@
 
 			<div class="comment">
 				<h2 class="comment-ti">相关评论</h2>
-				<div class="comment-item" v-for="(item, index) in commentData" :key="index">
+				<div class="comment-item" v-for="(item, index) in msgData.commentData" :key="index">
 					<div class="comment-user-logo-wrapper">
 						<img :src="item.userLogoSrc" class="comment-user-logo">
 					</div>
@@ -51,64 +51,43 @@
 					</div>
 				</div>
 			</div>
-
-      <GoodsFooter/>
 		</div>
+		<GoodsFooter/>
 	</div>
 </template>
 
 <script>
 import dateFormat from "date-format";
 import HeaderBar from "../components/headerBar";
-import GoodsFooter from '../components/goodsFooter'
+import GoodsFooter from "../components/goodsFooter";
+import { getGoodsDataById, getMsgData } from "../lib/data.js";
 
 export default {
 	data() {
 		return {
 			msgData: {
-				goods: {
-					goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
-					goodsDesc:
-						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					goodsImgSrc: "/images/food/1544975407715.jpg"
-				},
-				user: {
-					username: "小明",
-					userLogoSrc: "/src/assets/imgs/userLogo.jpg"
-				}
+				goods: {},
+				commentData: []
 			},
-			commentData: [
-				{
-					commentId: 1,
-					username: "小米姑娘",
-					userLogoSrc: "/src/assets/imgs/userLogo.jpg",
-					commentTime: 1545486230449,
-					commentContent: "哥哥哥哥哥哥",
-					reply: [
-						{
-							replyId: 1,
-							username: "小米姑娘",
-							replyContent: "哥哥哥哥哥哥"
-						}
-					]
-				}
-			],
-			recommendData: [
-				{
-					goodsId: 1,
-					goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
-					goodsPrice: 188,
-					goodsImgSrc: "/images/food/1544975407715.jpg"
-				}
-			]
+			recommendData: []
 		};
 	},
 	components: {
-    HeaderBar,
-    GoodsFooter
+		HeaderBar,
+		GoodsFooter
+	},
+	async created() {
+		this.msgData = await this.getMsgData();
+
+		this.recommendData = await this.getGoodsDataById(
+			this.msgData.goods.typeId,
+			3
+		);
 	},
 	methods: {
-		dateFormat
+		dateFormat,
+		getGoodsDataById,
+		getMsgData
 	}
 };
 </script>
@@ -116,6 +95,8 @@ export default {
 .message {
 	background: white;
 	.message-inner {
+		max-height: 550px;
+		overflow: scroll;
 		margin-top: 40px;
 		padding: 0 15px;
 	}

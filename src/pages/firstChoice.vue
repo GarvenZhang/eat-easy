@@ -45,12 +45,13 @@ export default {
 		},
 		getActiveTypes() {
 			const typeList = this.typeList.data;
+
 			return typeList.reduce((acc, item, i, arr) => {
 				if (item.isActive) {
 					if (acc === "") {
-						return item.name;
+						return item.id;
 					} else {
-						return acc + `,${item.name}`;
+						return acc + `,${item.id}`;
 					}
 				} else {
 					return acc;

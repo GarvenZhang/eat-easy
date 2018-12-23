@@ -55,15 +55,14 @@ async function createJson(src, targetSrc) {
         const stat = await stats(p);
 
         if (stat.isDirectory()) {
+            let index = 0;
             const dP = path.resolve(targetSrc, `${DataEnum[item]}.json`);
-
-
             const childDirResult = await readDir(p);
 
             for (let file of childDirResult) {
                 const src = path.resolve(p, file);
 
-                const data = await writeData(src, file.replace(/\.docx/, ''));
+                const data = await writeData(++index, src, file.replace(/\.docx/, ''));
 
                 foodData.push(data);
             }
@@ -81,21 +80,22 @@ async function createJson(src, targetSrc) {
 /**
  * 写入数据
  */
-async function writeData(src, fileName) {
+async function writeData(id, src, fileName) {
     const data = {
-        name: '',
-        desc: '',
-        img_src: []
+        goodsName: '',
+        goodsDesc: '',
+        goodsImgSrc: ''
     };
 
-    data.name = fileName;
+    data.goodsId = id;
+    data.goodsName = fileName;
 
     var options = {
         convertImage: mammoth.images.imgElement(function (image) {
             return image.read("base64").then(async function (imageBuffer) {
                 const imgName = `${+new Date()}.jpg`;
                 const filePath = path.resolve(foodSrc, imgName);
-                data.img_src.push(`/images/food/${imgName}`);
+                data.goodsImgSrc = `/images/food/${imgName}`;
 
                 // base64转化为图片，前缀不要，编码格式写为base64
                 await writeFile(filePath, imageBuffer, 'base64');
@@ -115,7 +115,7 @@ async function writeData(src, fileName) {
         path: src
     }, options);
 
-    data.desc = result.value.replace(`${fileName}\n\n`, '');
+    data.goodsDesc = result.value.replace(`${fileName}\n\n`, '');
 
     return data;
 }

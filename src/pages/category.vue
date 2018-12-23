@@ -4,11 +4,9 @@
 
 		<div class="category-inner">
 			<div class="category-list">
-				<div
-					v-for="(item, index) in categoryData"
-					:key="index"
-					:class="['category-list-item', categoryId == item.id ? 'active': '']"
-				>{{ item.name }}</div>
+				<router-link :to="`/category/${item.id}`" v-for="(item, index) in categoryData" :key="index">
+					<div :class="['category-list-item', categoryId == item.id ? 'active': '']">{{ item.name }}</div>
+				</router-link>
 			</div>
 			<div class="goods-list">
 				<router-link :to="`/message/${item.goodsId}`" v-for="(item, index) in goodsData" :key="index">
@@ -24,6 +22,10 @@ import GoodsItem from "../components/goodsItem";
 import HeaderBar from "../components/headerBar";
 import Menu from "../components/menu";
 
+import TypeList from "../../mock/type.json";
+
+import { getMessageListByType } from "../lib/data.js";
+
 export default {
 	components: {
 		GoodsItem,
@@ -37,37 +39,23 @@ export default {
 	},
 	data() {
 		return {
-			goodsData: [
-				{
-					goodsId: 1,
-					goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
-					goodsDesc:
-						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					goodsImgSrc: "/images/food/1544975407715.jpg"
-				},
-				{
-					goodsId: 2,
-					goodsName: "Calbee北海道黄油蜂蜜厚切薯片",
-					goodsDesc:
-						"这款连张根硕和少女时代都在网上大呼喜爱的蜂蜜黄油口味一直从去年红到现在！它的口味走红，也让不少其它品牌开始模效仿，不过，他们家的口味依然无可取代！\n\n感觉一切东西和蜂蜜、黄油混在一起，都会超好吃！北海道是日本最好的奶源地，这款Calbee（卡乐比）蜂蜜北海道黄油厚切薯片选用北海道产的黄油制成，薯片、黄油、蜂蜜混合，迷之甜咸味道真素超奇妙！\n\n\n\n",
-					goodsImgSrc: "/images/food/1544975407715.jpg"
-				}
-			],
-			categoryData: [
-				{
-					id: 1,
-					name: "aa"
-				},
-				{
-					id: 2,
-					name: "aa"
-				},
-				{
-					id: 3,
-					name: "aa"
-				}
-			]
+			goodsData: [],
+			categoryData: TypeList.data
 		};
+	},
+	watch: {
+		$route: "getMessageData"
+	},
+	async created() {
+		this.getMessageData();
+	},
+	methods: {
+		getMessageListByType,
+		async getMessageData() {
+			this.goodsData = await this.getMessageListByType(
+				parseInt(this.categoryId)
+			);
+		}
 	}
 };
 </script>
@@ -83,13 +71,13 @@ export default {
 			top: 40px;
 			left: 0;
 			bottom: 0;
-			width: 100px;
+			width: 85px;
 			border-right: 1px solid #eee;
 			background: white;
 			.category-list-item {
 				color: #333;
 				font-size: 14px;
-				line-height: 2;
+				line-height: 3;
 				border-bottom: 1px solid #eee;
 				&.active {
 					color: red;
@@ -101,7 +89,8 @@ export default {
 		}
 
 		.goods-list {
-			margin-left: 100px;
+			width: 100%;
+			margin-left: 85px;
 		}
 	}
 }

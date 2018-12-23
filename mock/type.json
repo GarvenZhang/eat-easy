@@ -1,23 +1,32 @@
 {
-  "data": [
-    {
-      "name": "biscuits",
+  "data": [{
+      "id": 1,
+      "name": "饼干",
+      "alia": "biscuits",
       "isActive": false
     },
     {
-      "name": "chips",
+      "id": 2,
+      "name": "薯片",
+      "alia": "chips",
       "isActive": false
     },
     {
-      "name": "chocolate",
+      "id": 3,
+      "name": "巧克力",
+      "alia": "chocolate",
       "isActive": false
     },
     {
-      "name": "nori",
+      "id": 4,
+      "name": "海苔",
+      "alia": "nori",
       "isActive": false
     },
     {
-      "name": "nut",
+      "id": 5,
+      "name": "坚果",
+      "alia": "nut",
       "isActive": false
     }
   ]
