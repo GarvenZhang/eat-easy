@@ -32,9 +32,6 @@ export default {
 		username: String,
 		commentNum: Number,
 		praiseNum: Number
-	},
-	data() {
-		return {};
 	}
 };
 </script>
