@@ -3,11 +3,11 @@
 		<HeaderBar to="/me" title="登录"/>
 
 		<div class="login-inner">
-			<div class="login-item">
+			<div class="login-item" @click="login">
 				<span class="icon icon-wechat"></span>
 				<span class="login-txt">微信登录</span>
 			</div>
-			<div class="login-item">
+			<div class="login-item" @click="login">
 				<span class="icon icon-phone"></span>
 				<span class="login-txt">手机登录</span>
 			</div>
@@ -17,13 +17,26 @@
 
 <script>
 import HeaderBar from "../components/headerBar";
+import cookie from "../lib/cookie.js";
 
 export default {
 	components: {
 		HeaderBar
 	},
 	data() {
-		return {};
+		return {
+			fPath: ""
+		};
+	},
+	methods: {
+		login() {
+			cookie.set("user", "jmazm", {});
+			alert("登录成功");
+
+			if (this.$route.query.from === "discovery") {
+				this.$router.push("/discovery");
+			}
+		}
 	}
 };
 </script>

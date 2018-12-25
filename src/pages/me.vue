@@ -8,7 +8,14 @@
 					<div class="icon-wrapper">
 						<img src="../assets/imgs/shenfenzheng.png">
 					</div>
-					<div class="me-content-wrapper">
+
+					<div class="me-content-wrapper" v-if="isLogin">
+						<p class="me-content">
+							<strong class="em">已登录</strong>
+						</p>
+						<p class="me-content" @click="logout">注销</p>
+					</div>
+					<div class="me-content-wrapper" v-else>
 						<p class="me-content">
 							<strong class="em">立即登录</strong>
 						</p>
@@ -24,6 +31,7 @@
 <script>
 import HeaderBar from "../components/headerBar";
 import Menu from "../components/menu";
+import cookie from "../lib/cookie.js";
 
 export default {
 	components: {
@@ -31,7 +39,14 @@ export default {
 		Menu
 	},
 	data() {
-		return {};
+		return {
+			isLogin: cookie.get("user")
+		};
+	},
+	methods: {
+		logout() {
+			cookie.unset("user", {});
+		}
 	}
 };
 </script>

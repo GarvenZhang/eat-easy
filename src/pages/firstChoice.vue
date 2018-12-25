@@ -63,11 +63,19 @@ export default {
 			this.$router.push("/");
 		},
 		clickHandle(name) {
-			// 种cookie
-			cookie.set("firstChoiceType", this.getActiveTypes(), { maxAge: MAXAGE });
-			cookie.set("hasChosenType", 1, { maxAge: MAXAGE });
-			// 跳转
-			this.$router.push("/");
+			const data = this.getActiveTypes();
+
+			if (data) {
+				// 种cookie
+				cookie.set("firstChoiceType", this.getActiveTypes(), {
+					maxAge: MAXAGE
+				});
+				cookie.set("hasChosenType", 1, { maxAge: MAXAGE });
+				// 跳转
+				this.$router.push("/");
+			} else {
+				alert("请选择你喜欢的食物种类");
+			}
 		}
 	}
 };
@@ -91,8 +99,11 @@ export default {
 	height: 70px;
 }
 .main .hd {
+	font-size: 14px;
 	text-align: right;
 	margin-right: 10px;
+	margin-top: 5px;
+	font-weight: bold;
 }
 .main .bd {
 	flex: 1;
@@ -122,13 +133,15 @@ export default {
 	right: 13%;
 }
 .main .btn-enter {
-	padding: 5px 10px;
+	padding: 8px 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	background-color: transparent;
 }
 .main .btn-enter:active {
-	background-color: #ccc;
+	color: white;
+	background-color: #ef5353;
+	border-color: #ef5353;
 }
 </style>
 

@@ -83,7 +83,6 @@ export default {
 	},
 	async created() {
 		this.msgData = await this.getMsgData();
-
 		this.recommendData = await this.getGoodsDataById(
 			this.msgData.goods.typeId,
 			3

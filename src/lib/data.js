@@ -61,7 +61,6 @@ export async function getIndexMessageListByType() {
 
     if (hasChosenType == 1) {
         typeIdArr = cookie.get('firstChoiceType').split(',');
-
     } else {
         typeIdArr = [2, 5]
     }
