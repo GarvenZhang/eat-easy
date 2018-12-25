@@ -54,9 +54,18 @@ export function getMsgData() {
  * 获取首页数据
  */
 export async function getIndexMessageListByType() {
-    const typeIdArr = cookie.get('firstChoiceType').split(',');
-
+    const hasChosenType = cookie.get('hasChosenType');
+    let typeIdArr = []
     let msgData = [];
+
+
+    if (hasChosenType == 1) {
+        typeIdArr = cookie.get('firstChoiceType').split(',');
+
+    } else {
+        typeIdArr = [2, 5]
+    }
+
 
     for (let id of typeIdArr) {
 
@@ -91,14 +100,13 @@ export function getGoodsDataById(id, len) {
         return item.id === id;
     })
 
-    console.log(id, len, filterType)
-
     const type = filterType[0].alia;
 
     const data = goodsData[type];
 
     for (let item of data) {
         item.typeId = id;
+        item.goodsPrice = Math.ceil(Math.random() * 100)
     }
 
     if (len) {

@@ -9,8 +9,17 @@
 				</router-link>
 			</div>
 			<div class="goods-list">
-				<router-link :to="`/message/${item.goodsId}`" v-for="(item, index) in goodsData" :key="index">
-					<GoodsItem :name="item.goodsName" :imgSrc="item.goodsImgSrc" :desc="item.goodsDesc"/>
+				<router-link
+					@click.native="saveMsgDataByCookie(item)"
+					:to="`/message/${item.goodsId}`"
+					v-for="(item, index) in goodsData"
+					:key="index"
+				>
+					<GoodsItem
+						:name="item.goods.goodsName"
+						:imgSrc="item.goods.goodsImgSrc"
+						:desc="item.goods.goodsDesc"
+					/>
 				</router-link>
 			</div>
 		</div>
@@ -24,7 +33,7 @@ import Menu from "../components/menu";
 
 import TypeList from "../../mock/type.json";
 
-import { getMessageListByType } from "../lib/data.js";
+import { getMessageListByType, saveMsgDataByCookie } from "../lib/data.js";
 
 export default {
 	components: {
@@ -47,10 +56,11 @@ export default {
 		$route: "getMessageData"
 	},
 	async created() {
-		this.getMessageData();
+		await this.getMessageData();
 	},
 	methods: {
 		getMessageListByType,
+		saveMsgDataByCookie,
 		async getMessageData() {
 			this.goodsData = await this.getMessageListByType(
 				parseInt(this.categoryId)
@@ -71,26 +81,24 @@ export default {
 			top: 40px;
 			left: 0;
 			bottom: 0;
-			width: 85px;
-			border-right: 1px solid #eee;
+			width: 100px;
+			border-right: 1px solid rgba(0, 0, 0, 0.1);
 			background: white;
 			.category-list-item {
 				color: #333;
 				font-size: 14px;
-				line-height: 3;
-				border-bottom: 1px solid #eee;
+				line-height: 2.5;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 				&.active {
-					color: red;
+					color: white;
+					background: #ea4d4d;
 				}
-			}
-			.category-list-item:last-of-type {
-				border: none;
 			}
 		}
 
 		.goods-list {
 			width: 100%;
-			margin-left: 85px;
+			margin-left: 100px;
 		}
 	}
 }

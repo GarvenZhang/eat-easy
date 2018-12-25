@@ -1,63 +1,67 @@
 <template>
 	<div class="message">
 		<HeaderBar to="/" title="详情"/>
-		<div class="message-inner">
-			<div class="message-detail">
-				<div class="message-image-wrapper">
-					<img class="message-image" :src="msgData.goods.goodsImgSrc">
-				</div>
-				<div class="message-content">
-					<h1 class="message-name">{{ msgData.goods.goodsName }}</h1>
-					<p class="message-desc">{{ msgData.goods.goodsDesc }}</p>
-				</div>
-			</div>
-
-			<div class="comment">
-				<h2 class="comment-ti">相关评论</h2>
-				<div class="comment-item" v-for="(item, index) in msgData.commentData" :key="index">
-					<div class="comment-user-logo-wrapper">
-						<img :src="item.userLogoSrc" class="comment-user-logo">
+		<Container>
+			<div class="message-inner">
+				<div class="message-detail">
+					<div class="message-image-wrapper">
+						<img class="message-image" :src="msgData.goods.goodsImgSrc">
 					</div>
-					<div class="comment-content-wrapper">
-						<div class="comment-username">{{ item.username }}</div>
-						<div class="comment-content">{{ item.commentContent }}</div>
-						<div class="comment-opts">
-							<span class="comment-time">{{ dateFormat('yyyy/MM/dd hh:mm', new Date(item.commentTime)) }}</span>
-							<span class="comment-praise"></span>
-						</div>
+					<div class="message-content">
+						<h1 class="message-name">{{ msgData.goods.goodsName }}</h1>
+						<p class="message-desc">{{ msgData.goods.goodsDesc }}</p>
+					</div>
+				</div>
 
-						<div class="apply">
-							<div class="apply-item" v-for="(r, index) in item.reply" :key="index">
-								<span class="apply-name">{{ r.username }}：</span>
-								<span class="apply-content">{{ r.replyContent }}</span>
+				<div class="comment">
+					<h2 class="comment-ti">相关评论</h2>
+					<div class="comment-item" v-for="(item, index) in msgData.commentData" :key="index">
+						<div class="comment-user-logo-wrapper">
+							<img :src="item.userLogoSrc" class="comment-user-logo">
+						</div>
+						<div class="comment-content-wrapper">
+							<div class="comment-username">{{ item.username }}</div>
+							<div class="comment-content">{{ item.commentContent }}</div>
+							<div class="comment-opts">
+								<span class="comment-time">{{ dateFormat('yyyy/MM/dd hh:mm', new Date(item.commentTime)) }}</span>
+								<span class="comment-praise"></span>
+							</div>
+
+							<div class="apply">
+								<div class="apply-item" v-for="(r, index) in item.reply" :key="index">
+									<span class="apply-name">{{ r.username }}：</span>
+									<span class="apply-content">{{ r.replyContent }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="recommend">
+					<h2 class="recommend-ti">推荐商品</h2>
+					<div class="recommend-item" v-for="(item, index) in recommendData" :key="index">
+						<div class="recommend-img-wrapper">
+							<img :src="item.goodsImgSrc" class="goods-img">
+						</div>
+						<div class="recommend-content">
+							<div class="recommend-name">{{ item.goodsName }}</div>
+							<div class="recommend-price">{{ item.goodsPrice }}元包邮</div>
+							<div class="recommend-opts">
+								<button class="btn" type="button">加入清单</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</Container>
 
-			<div class="recommend">
-				<h2 class="recommend-ti">推荐商品</h2>
-				<div class="recommend-item" v-for="(item, index) in recommendData" :key="index">
-					<div class="recommend-img-wrapper">
-						<img :src="item.goodsImgSrc" class="goods-img">
-					</div>
-					<div class="recommend-content">
-						<div class="recommend-name">{{ item.goodsName }}</div>
-						<div class="recommend-price">{{ item.goodsPrice }}包邮</div>
-						<div class="recommend-opts">
-							<button class="btn" type="button">加入清单</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<GoodsFooter/>
 	</div>
 </template>
 
 <script>
 import dateFormat from "date-format";
+import Container from "../components/container";
 import HeaderBar from "../components/headerBar";
 import GoodsFooter from "../components/goodsFooter";
 import { getGoodsDataById, getMsgData } from "../lib/data.js";
@@ -74,7 +78,8 @@ export default {
 	},
 	components: {
 		HeaderBar,
-		GoodsFooter
+		GoodsFooter,
+		Container
 	},
 	async created() {
 		this.msgData = await this.getMsgData();
@@ -93,12 +98,10 @@ export default {
 </script>
 <style lang="less" scoped>
 .message {
-	background: white;
 	.message-inner {
-		max-height: 550px;
-		overflow: scroll;
-		margin-top: 40px;
 		padding: 0 15px;
+		margin: 15px 10px;
+		background: white;
 	}
 	.message-image-wrapper,
 	.message-image {
@@ -112,7 +115,6 @@ export default {
 
 	.message-content {
 		font-size: 14px;
-		border-top: 1px solid #f5f5f5;
 		background: white;
 		.message-name {
 			font-size: 18px;
@@ -138,13 +140,14 @@ export default {
 }
 
 .comment {
-	border-top: 1px solid #f5f5f5;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	margin-bottom: 10px;
 	.comment-item {
 		display: flex;
 		justify-content: space-between;
 		padding: 10px 0;
-		border-bottom: 1px solid #f5f5f5;
+		margin-bottom: 5px;
 
 		.comment-user-logo-wrapper {
 			margin-left: 20px;
@@ -183,10 +186,10 @@ export default {
 .apply {
 	margin-top: 5px;
 	padding: 0 10px;
-	background: rgba(170, 170, 170, 0.63);
+	background: #eee;
 	.apply-item {
 		padding: 5px 0;
-		border-bottom: 1px solid #f5f5f5;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 		.apply-name {
 			color: rgb(63, 81, 181);
 		}
@@ -213,6 +216,7 @@ export default {
 				display: block;
 				padding: 5px;
 				width: 100%;
+				height: 100%;
 			}
 		}
 

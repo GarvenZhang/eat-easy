@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development && webpack-dev-server --config ./build/webpack.dev.config.js",
-    "json": "node ./scripts/del.js && node ./scripts/getJsonFromDoc.js"
+    "json": "node ./scripts/del.js && node ./scripts/getJsonFromDoc.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.config.js"
   },
   "keywords": [
     "vue实例"

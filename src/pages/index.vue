@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div class="banner">
-			<mt-swipe :auto="4000">
+			<mt-swipe :auto="3000">
 				<mt-swipe-item>
 					<img src="../assets/imgs/banner-01.jpg" class="banner-img">
 				</mt-swipe-item>
@@ -15,6 +15,14 @@
 		</div>
 		<nav class="menu">
 			<ul class="menu-list">
+				<li class="menu-list-item">
+					<router-link to="/">
+						<div class="menu-list-item-link">
+							<span class="icon icon-sign"></span>
+							<span class="menu-txt">签到</span>
+						</div>
+					</router-link>
+				</li>
 				<li class="menu-list-item">
 					<router-link to="/">
 						<div class="menu-list-item-link">
@@ -33,29 +41,32 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="message-list">
-			<router-link
-				v-for="(item, index) in messageListData"
-				:key="index"
-				:to="`/message/${item.messageId}`"
-				@click.native="saveMsgDataByCookie(item)"
-			>
-				<MessageItem
-					:imgSrc="item.goods.goodsImgSrc"
-					:userLogoSrc="item.user.userLogoSrc"
-					:desc="item.goods.goodsDesc"
-					:username="item.user.username"
-					:commentNum="item.commentNum"
-					:praiseNum="item.praiseNum"
-				/>
-			</router-link>
-		</div>
+		<Container class="container-index">
+			<div class="message-list">
+				<router-link
+					v-for="(item, index) in messageListData"
+					:key="index"
+					:to="`/message/${item.messageId}`"
+					@click.native="saveMsgDataByCookie(item)"
+				>
+					<MessageItem
+						:imgSrc="item.goods.goodsImgSrc"
+						:userLogoSrc="item.user.userLogoSrc"
+						:desc="item.goods.goodsDesc"
+						:username="item.user.username"
+						:commentNum="item.commentNum"
+						:praiseNum="item.praiseNum"
+					/>
+				</router-link>
+			</div>
+		</Container>
 		<Menu/>
 	</div>
 </template>
 
 <script>
 import { Swipe, SwipeItem } from "mint-ui";
+import Container from "../components/container";
 import MessageItem from "../components/messageItem";
 import cookie from "../lib/cookie";
 import Menu from "../components/menu";
@@ -67,7 +78,8 @@ export default {
 		Swipe,
 		SwipeItem,
 		MessageItem,
-		Menu
+		Menu,
+		Container
 	},
 	data() {
 		return {
@@ -100,11 +112,16 @@ export default {
 			height: 100%;
 		}
 	}
+	.container-index {
+		top: 212px;
+	}
 	.menu {
 		padding: 3px 0;
 		.menu-list {
 			display: flex;
 			justify-content: center;
+			padding: 5px 0;
+
 			background: white;
 
 			.menu-list-item {
@@ -119,22 +136,28 @@ export default {
 			.menu-list-item:last-of-type {
 				margin-right: 0;
 			}
+
+			.menu-txt {
+				color: #d81e06;
+			}
 		}
 	}
 	.message-list {
-		padding: 0 10px;
-		max-height: 360px;
-		overflow: scroll;
+		padding: 0 15px;
 		margin: 15px 0;
 	}
 
 	.icon {
 		display: inline-block;
-		width: 32px;
-		height: 32px;
+		width: 28px;
+		height: 28px;
+		margin-bottom: 5px;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: contain;
+	}
+	.icon-sign {
+		background-image: url(../assets/imgs/sign.png);
 	}
 	.icon-recommend {
 		background-image: url(../assets/imgs/order.png);

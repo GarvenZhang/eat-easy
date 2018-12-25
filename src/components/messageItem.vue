@@ -42,8 +42,10 @@ export default {
 <style lang="less" scoped>
 .message-item {
 	border: 1px solid #f5f5f5;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	background-color: white;
+	box-shadow: 4px 3px 3px 1px rgba(0, 0, 0, 0.1);
+	border-radius: 3px;
 
 	.message-item-inner {
 		display: flex;

@@ -24,8 +24,8 @@ export default {
 <style lang="less" scoped>
 .goods-item {
 	display: flex;
-	padding: 20px 10px;
-	border-bottom: 1px solid #f5f5f5;
+	padding: 20px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 	background: white;
 
 	.goods-img-wrapper {
@@ -36,6 +36,7 @@ export default {
 			display: block;
 			width: 70px;
 			height: 70px;
+			box-shadow: 5px 3px 3px 1px rgba(0, 0, 0, 0.1);
 		}
 	}
 

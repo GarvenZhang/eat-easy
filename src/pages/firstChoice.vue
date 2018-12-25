@@ -88,7 +88,7 @@ export default {
 }
 .main .hd,
 .main .ft {
-	height: 30px;
+	height: 70px;
 }
 .main .hd {
 	text-align: right;
@@ -122,6 +122,7 @@ export default {
 	right: 13%;
 }
 .main .btn-enter {
+	padding: 5px 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	background-color: transparent;
