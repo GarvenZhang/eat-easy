@@ -3,6 +3,6 @@
         "goodsId": 1,
         "goodsName": "Calbee北海道黄油蜂蜜厚切薯片",
         "goodsPrice": 188,
-        "goodsImgSrc": "/images/food/1544975407715.jpg"
+        "goodsImgSrc": "./images/food/1544975407715.jpg"
     }]
 }

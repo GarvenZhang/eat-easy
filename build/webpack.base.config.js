@@ -1,20 +1,20 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {
   VueLoaderPlugin
-} = require('vue-loader');
+} = require('vue-loader')
 
-const ROOT = process.cwd();
-const ENTRY = path.resolve(ROOT, './src');
-const OUTPUT = path.resolve(ROOT, './dist');
+const ROOT = process.cwd()
+const ENTRY = path.resolve(ROOT, './src')
+const OUTPUT = path.resolve(ROOT, './dist')
 
 module.exports = {
   entry: path.resolve(ENTRY, 'main.js'),
   output: {
     filename: '[name].js',
     path: OUTPUT,
-    publicPath: '/'
+    publicPath: './'
   },
   resolve: {
     extensions: [
